@@ -1,9 +1,12 @@
 #include <stdio.h>
 
 /**
- * A program that prints exactly
- * "Programming is like building a multilingual puzzle"
- * followed by one line
+ * main - Puts out a string
+(*
+ * Description: A program that prints exactly "Programming is like
+ * building a multilingual puzzle"
+ * followed by new line")?
+ * Return: A string
  */
 int main(void)
 {
