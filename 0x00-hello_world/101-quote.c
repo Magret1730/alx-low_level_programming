@@ -14,9 +14,9 @@
 
 int main(void)
 {
-	char Magret[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19";
+	char Art[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
 
-	write(STDOUT_FILENO, Magret, sizeof(Magret));
+	write(STDOUT_FILENO, Art, sizeof(Art));
 
 	return (1);
 }
