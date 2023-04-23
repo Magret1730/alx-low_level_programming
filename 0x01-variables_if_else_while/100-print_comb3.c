@@ -12,27 +12,41 @@ int main(void)
 {
 	int i;
 	int j;
+	int count;
+
+	count = 0;
 
 	for (i = 0; i <= 9; i++)
 	{
-	for (j = i; j <= 9; j++)
-	{
-		if (i == j)
-			continue;
-		if (i > j)
+		for (j = i; j <= 9; j++)
 		{
-			int k = i;
+			if (i == j)
+				continue;
+			if (i > j)
+			{
+				int k = i;
 
-			i = j;
-			j = k;
+				i = j;
+				j = k;
+			}
+
+			putchar(i + '0');
+			putchar(j + '0');
+
+			if (i < 8 || j < 9)
+			{
+				putchar(',');
+				putchar(' ');
+			}
+
+			count++;
 		}
+	}
 
-		putchar(i + '0');
-		putchar(j + '0');
-		putchar(',');
-		putchar(' ');
+	if (count > 0)
+	{
+		putchar('\n');
 	}
-	}
-	putchar('\n');
+
 	return (0);
 }
