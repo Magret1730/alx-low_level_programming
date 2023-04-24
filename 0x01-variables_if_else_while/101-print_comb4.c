@@ -11,9 +11,7 @@
 
 int main(void)
 {
-	int i;
-	int j;
-	int k;
+	int i, j, k;
 	int count = 0;
 
 	for (i = 0; i <= 9; i++)
@@ -29,21 +27,21 @@ int main(void)
 				putchar(j + '0');
 				putchar(k + '0');
 
-				if (i < 8 || j < 8 || k < 9)
-				{
-					putchar(',');
-					putchar(' ');
-				}
-
 				count++;
+
+				if (i == 7 && j == 8 && k == 9)
+					continue;
+				putchar(',');
+				putchar(' ');
 			}
 		}
+	}
 
 	if (count > 0)
 	{
 		putchar('\n');
 	}
 
-	}
 	return (0);
 }
+
