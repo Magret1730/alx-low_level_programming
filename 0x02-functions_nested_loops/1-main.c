@@ -1,35 +1,17 @@
-#include <unistd.h>
-
-/**
- * _putchar - writes the character c stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, the errno is set appropriately
- */
-
-int _putchar(char c)
-{
-	return(write(1, &c, 1));
-}
-
-#include <unistd.h>
 #include "main.h"
 
 /**
- * void - it returns nothing
+ * main - void
  *
- * Description: it prints out the alphabets in lowercase
- * unistd.h: declares miscallanous functions
- * main.h: prints using _putchar function
- * Return: print_alphabet
+ * Description: calls the function print_alphabet
+ * Return: 0 always
  */
 
-void print_alphabet(void)
+int main(void)
 {
-	char print_alphabet;
-	for (print_alphabet = 'a'; print_alphabet <= 'z'; print_alphabet++)
-	{
-		_putchar(print_alphabet);
-	}
+	print_alphabet();
+
+	_putchar('\n');
+
+	return (0);
 }

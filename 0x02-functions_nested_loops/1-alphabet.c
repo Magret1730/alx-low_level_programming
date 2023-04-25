@@ -1,19 +1,20 @@
-#include <unistd.h>
 #include "main.h"
 
 /**
- * main - void
+ * print_alphabet - prints lowercase alphabet
  *
- * Description: prints out lowercase alphabets with
- * declared function _putchar(print_alphabet)
- * Return: 0
+ * Description: it prints out the alphabets in lowercase
+ * unistd.h: declares miscallanous functions
+ * main.h: prints using _putchar function
+ * Return: print_alphabet
  */
 
-int main(void)
+void print_alphabet(void)
 {
-	print_alphabet();
+	char print_alphabet;
 
-	_putchar('\n');
-
-	return (0);
+	for (print_alphabet = 'a'; print_alphabet <= 'z'; print_alphabet++)
+	{
+		_putchar(print_alphabet);
+	}
 }
