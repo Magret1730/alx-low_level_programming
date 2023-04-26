@@ -2,7 +2,9 @@
 
 /**
  * main - causes an infinite loop
- * Result: 0
+ *
+ * Description - debugging for infinite loop
+ * Return: always success 0
  */
 
 int main(void)
