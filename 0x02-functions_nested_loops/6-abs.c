@@ -3,6 +3,7 @@
 
 /**
  * _abs - absolute value
+ * @mag: accepts integer
  *
  * Description - prints absolute value
  * of an integer
