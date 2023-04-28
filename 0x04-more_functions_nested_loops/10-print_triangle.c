@@ -11,39 +11,27 @@
 
 void print_triangle(int size)
 {
-	int i, j;
+	int i, j, k;
 
 	if (size <= 0)
 	{
 		_putchar('\n');
 		return;
 	}
-
-	for (i = 0; i < size; i++)
+	for (i = 1; i <= size + 1; i++)
 	{
-		for (j = 0; j < size - i - 1; j++)
+		if (i == size + 1)
+		{
+			break;
+		}
+		for (j = 1; j <= size - i + 1; j++)
 		{
 			_putchar(' ');
 		}
-
-		_putchar('#');
-
-		for (j = 0; j < 2 * i + 1; j++)
-		{
-			if (i == size - 1 || j == 2 * i - 1)
-			{
-				_putchar('#');
-			}
-			else
-			{
-				_putchar(' ');
-			}
-		}
-		if (i != 0 && i != size - 1)
+		for (k = 1; k <= i; k++)
 		{
 			_putchar('#');
 		}
-
 		_putchar('\n');
 	}
 }
