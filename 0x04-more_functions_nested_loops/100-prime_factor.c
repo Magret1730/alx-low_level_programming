@@ -37,6 +37,6 @@ int main(void)
 
 	}
 
-	printf("%d\n", largest);
+	printf("%d\n", num);
 	return 0;
 }
