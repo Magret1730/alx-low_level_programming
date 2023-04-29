@@ -27,16 +27,17 @@ int main(void)
 			largest = 2;
 		}
 	}
-	for (i = 3; i*i <= n; i += 2)
+	for (i = 3; i * i <= n; i += 2)
 	{
 		while (n % i == 0)
-                {
+		{
 			n = n / i;
 			largest = i;
 		}
 
 	}
 
-	printf("%d\n", num);
-	return 0;
+	printf("%ld \n", n);
+
+	return (0);
 }
