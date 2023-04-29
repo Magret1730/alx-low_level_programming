@@ -11,8 +11,8 @@
 
 int main(void)
 {
-	int largest;
-	int i;
+	long int largest;
+	long int i;
 	long int n, calc_n;
 
 	calc_n = 612852475143;
@@ -30,8 +30,8 @@ int main(void)
 	{
 		while (n % i == 0)
 		{
-			n = n / i;
 			largest = i;
+			n = n / i;
 		}
 
 	}
