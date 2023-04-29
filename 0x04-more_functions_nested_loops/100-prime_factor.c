@@ -13,9 +13,10 @@ int main(void)
 {
 	int largest;
 	int i;
-	long int n;
+	long int n, calc_n;
 
-	n = 612852475143;
+	calc_n = 612852475143;
+	n = calc_n;
 
 	while (n % 2 == 0)
 	{
