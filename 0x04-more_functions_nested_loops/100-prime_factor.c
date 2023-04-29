@@ -20,14 +20,12 @@ int main(void)
 	while (n % 2 == 0)
 	{
 		n = n / 2;
-		printf("factor is 2 \n");
-		printf("n is now %ld \n", n);
 		if (largest < 2)
 		{
 			largest = 2;
 		}
 	}
-	for (i = 3; i * i <= n; i += 2)
+	for (i = 3; i < n; i += 2)
 	{
 		while (n % i == 0)
 		{
@@ -37,7 +35,10 @@ int main(void)
 
 	}
 
-	printf("%ld \n", n);
+	if (n > 2)
+	{
+		printf("%ld \n", n);
+	}
 
 	return (0);
 }
