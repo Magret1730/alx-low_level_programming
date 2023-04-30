@@ -23,18 +23,21 @@ int print_last_digit(int num)
 
 	if (num < 0)
 	{
-		num = num * -1;
+		/**
+		 * num = num * -1;
+		 */
 
 		last_digit = num % 10;
+		_putchar(-last_digit + 48);
 
-		_putchar(last_digit + 48);
+		return (-last_digit);
 	}
 	else
 	{
 		last_digit = num % 10;
-
 		_putchar(last_digit + 48);
-	}
 
-	return (last_digit);
+		return (last_digit);
+
+	}
 }
