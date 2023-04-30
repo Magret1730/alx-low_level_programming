@@ -15,18 +15,24 @@ int print_last_digit(int num)
 
 	if (num == 0)
 	{
-		_putchar('0');
-		return (0);
+		_putchar(num);
+		return (num);
 	}
 
 	if (num < 0)
 	{
-		num *= -1;
+		num = num * -1;
+
+		last_digit = num % 10;
+
+		_putchar(last_digit + 48);
 	}
+	else
+	{
+		last_digit = num % 10;
 
-	last_digit = num % 10;
-
-	_putchar(last_digit + '0');
+		_putchar(last_digit + 48;)
+	}
 
 	return (last_digit);
 }
