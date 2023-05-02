@@ -20,32 +20,53 @@ void times_table(void)
 		{
 			m = i * j;
 
-			if (m > 9)
-				if (j < 9)
-				{
-					_putchar('0' + m / 10);
-					_putchar('0' + m % 10);
-					_putchar(',');
-					_putchar(' ');
-				}
-				else
-				{
-					_putchar('0' + m / 10);
-					_putchar('0' + m % 10);
-				}
+			if (m == 0)
+			{
+				_putchar('0' + m);
+			}
 
-			else
-				if (j < 9)
-				{
-					_putchar('0' + m);
-					_putchar(',');
-					_putchar(' ');
-				}
-				else
-				{
-					_putchar('0' + m);
-				}
-
+			/**
+			 * if (m == 0 && (j > 1 || j <= 9))
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar(' ');
+				_putchar('0' + m);
+			}
+			else if (m == 0 && j == 0)
+			{
+				_putchar('0' + m);
+			}
+			*/
+			
+			
+			if (m <= 9 && j != 0)
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar(' ');
+				_putchar('0' + m);
+			}
+			else if (m >= 10)
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar('0' + (m / 10));
+				_putchar('0' + (m % 10));
+			}
+			/**
+			 * if (m == 0 && (j > 1 || j <= 9))
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar(' ');
+				_putchar('0' + m);
+			}
+			else if (m == 0 && j == 0)
+			{
+				_putchar('0' + m);
+			}
+			*/
 		}
 
 		_putchar('\n');
