@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdio.h>
+#include <stddef.h>
 
 /**
  * puts_half - half of string
@@ -12,9 +12,9 @@
 
 void puts_half(char *str)
 {
-	int i;
-	int n;
-	int length_of_string;
+	size_t i;
+	size_t n;
+	size_t length_of_string;
 
 	length_of_string = 0;
 
