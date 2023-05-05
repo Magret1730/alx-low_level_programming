@@ -17,11 +17,13 @@ char *_strncat(char *dest, char *src, int n)
 	int i;
 	int dest_length;
 
+	dest_length = 0;
+
 	/**
 	 * size = sizeof(dest) / sizeof(dest[0]);
 	 */
 
-	while (dest_length != '\0')
+	while (dest[dest_length] != '\0')
 	{
 		dest_length++;
 	}
