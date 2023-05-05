@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * *_strncat - contatenates n bytes from src
@@ -15,25 +16,22 @@
 char *_strncat(char *dest, char *src, int n)
 {
 	int i;
-	int dest_length;
+	int j;
 
-	dest_length = 0;
+	i = 0;
+	j = 0;
 
-	/**
-	 * size = sizeof(dest) / sizeof(dest[0]);
-	 */
-
-	while (dest[dest_length] != '\0')
+	while (dest[i] != '\0')
 	{
-		dest_length++;
+		i++;
 	}
 
-	for (i = 0; i < n && src[i] != '\0'; i++)
+	while (src[j] != '\0' && i < n)
 	{
-		src[i] = dest[dest_length + i];
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-
-	dest[dest_length + i] = '\0';
 
 	return (dest);
 }
