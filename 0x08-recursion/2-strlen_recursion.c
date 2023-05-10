@@ -5,7 +5,7 @@
  * @s: recieves a string
  *
  * Description: function that returns the length of a string
- * Returns: length
+ * Return: length
  */
 
 int _strlen_recursion(char *s)
