@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-
 /**
  * main - program that adds positive numbers
  * @argc: counts
  * @argv: string
- *
  * Description: program that adds positive numbers.Print the result,
  * followed by a new line.If no number is passed to the program, print 0,
  * followed by a new line.If one of the number contains symbols that are
@@ -15,25 +13,40 @@
  * in an int.
  * Return: 0
  */
-
 int main(int argc, char *argv[])
 {
+	/**
+	 * int i, add = 0;
+	if (argc > 1){
+		for (i = 1; i < argc; i++){
+			if (isdigit(*argv[i]))
+				add += atoi(argv[i]);
+			else
+				printf("Error\n");
+				return (1);
+		}
+		printf("%d\n", add);
+	}
+	else
+		printf("0\n");
+	return (0);
+	*/
 	int add = 0;
-	int i;
+	int i, j;
 
 	if (argc > 1)
 	{
 		for (i = 1; i < argc; i++)
 		{
-			if (isdigit(*argv[i]))
+			for (j = 0; argv[i][j] != '\0'; j++)
 			{
-				add += atoi(argv[i]);
+				if (!isdigit(argv[i][j]))
+				{
+					printf("Error\n");
+					return (1);
+				}
 			}
-			else
-			{
-				printf("Error\n");
-				return (1);
-			}
+			add += atoi(argv[i]);
 		}
 		printf("%d\n", add);
 	}
