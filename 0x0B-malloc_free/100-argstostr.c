@@ -18,7 +18,7 @@ char *argstostr(int ac, char **av)
 	int total_length = 0, current_length = 0;
 	char *concat;
 
-	if (ac == 0 || av == NULL)
+	if (ac <= 0 || av == NULL)
 	{
 		return (NULL);
 	}
