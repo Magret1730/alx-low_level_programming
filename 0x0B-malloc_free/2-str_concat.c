@@ -28,7 +28,7 @@ char *str_concat(char *s1, char *s2)
 		len1 = strlen(s1);
 		len2 = 0;
 	}
-	else if (s1 != NULL && s2 != NULL )
+	else if (s1 != NULL && s2 != NULL)
 	{
 		len1 = strlen(s1);
 		len2 = strlen(s2);
