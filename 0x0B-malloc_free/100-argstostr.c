@@ -22,21 +22,17 @@ char *argstostr(int ac, char **av)
 	{
 		return (NULL);
 	}
-
 	for (i = 0; i < ac; i++)
 	{
 		current_length = strlen(av[i]);
 		total_length += current_length;
 	}
-
 	total_length += ac - 1;
-
 	concat = malloc(sizeof(char) * (total_length + 1));
 	if (concat == NULL)
 	{
 		return (NULL);
 	}
-
 	current_length = 0;
 	for (i = 0; i < ac; i++)
 	{
@@ -49,9 +45,11 @@ char *argstostr(int ac, char **av)
 		{
 			concat[current_length++] = '\n';
 		}
+		else
+		{
+			concat[current_length++] = '\n';
+			concat[current_length] = '\0';
+		}
 	}
-	concat[current_length] = '\0';
-
 	return (concat);
 }
-
