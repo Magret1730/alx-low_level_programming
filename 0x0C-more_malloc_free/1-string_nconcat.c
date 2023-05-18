@@ -42,7 +42,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		return (p);
 
 	strncpy(p, s1, len_s1);
-	strncpy(p + len_s1, s2, len_total - len_s1);
+	if (n >= len_s2)
+		strncpy(p + len_s1, s2, len_s2);
+	else
+		strncpy(p + len_s1, s2, n);
 
 	p[len_total] = '\0';
 
