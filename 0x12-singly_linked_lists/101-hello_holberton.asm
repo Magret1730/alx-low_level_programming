@@ -1,16 +1,19 @@
 section .data
     format db 'Hello, Holberton', 0Ah ; Null-terminated format string
+    len equ $ - format                ; Length of the string
 
 section .text
-    global main
+    global _start
 
 _start:
-    mov edx, 16                 ; Length of the string
-    mov ecx, format              ; Pointer to the format string
-    mov ebx, 1                  ; File descriptor for stdout
-    mov eax, 4                  ; System call number for write
-    int 0x80                    ; Invoke the system call
+    ; Write to stdout
+    mov eax, 1                  ; System call number for write
+    mov edi, 1                  ; File descriptor for stdout
+    mov esi, format              ; Pointer to the format string
+    mov edx, len                ; Length of the string
+    syscall                     ; Invoke the system call
 
-    mov eax, 1                  ; System call number for exit
-    xor ebx, ebx                ; Exit status (0)
-    int 0x80                    ; Invoke the system call
+    ; Exit the program
+    mov eax, 60                 ; System call number for exit
+    xor edi, edi                ; Exit status (0)
+    syscall                     ; Invoke the system call
