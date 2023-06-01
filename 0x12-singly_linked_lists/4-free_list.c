@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * free-list - function that frees a list_t list
+ * free_list - function that frees a list_t list
  * @head: begining of the node
  * Description: function that frees a list_t list.
  * Return: void
