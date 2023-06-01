@@ -14,15 +14,13 @@ size_t list_len(const list_t *h)
 
 	const list_t *present = h;
 
-	while(present != NULL)
+	while (present != NULL)
 	{
 		if (present->str == NULL)
 			return (-1);
-		else
-		{
-			present = present->next;
-			count++;
-		}
+
+		present = present->next;
+		count++;
 	}
 	return (count);
 }
