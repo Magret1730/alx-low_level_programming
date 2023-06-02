@@ -1,19 +1,22 @@
-section .data
-    format db 'Hello, Holberton', 0Ah ; Null-terminated format string
-    len equ $ - format                ; Length of the string
+extern	printf
 
-section .text
-    global _start
+	section	.data
+msg:	db "Hello, Holberton", 0
+fmt:	db "%s", 10, 0
 
-_start:
-    ; Write to stdout
-    mov eax, 1                  ; System call number for write
-    mov edi, 1                  ; File descriptor for stdout
-    mov esi, format              ; Pointer to the format string
-    mov edx, len                ; Length of the string
-    syscall                     ; Invoke the system call
+	section	.text
 
-    ; Exit the program
-    mov eax, 60                 ; System call number for exit
-    xor edi, edi                ; Exit status (0)
-    syscall                     ; Invoke the system call
+	global	main
+main:
+
+	push	rbp
+
+	mov	rdi,fmt
+	mov	rsi,msg
+	mov	rax,0
+	call	printf
+
+	pop	rbp
+
+	mov	rax,0
+	ret
