@@ -2,7 +2,6 @@
 #define LISTS_H
 
 /*standard libraries*/
-#include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
 
