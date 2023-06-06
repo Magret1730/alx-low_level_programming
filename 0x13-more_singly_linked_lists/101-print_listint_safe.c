@@ -14,12 +14,14 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	int count = 0;
-	const listint_t *ptr = head;
 	const listint_t *ptr1 = head;
 	const listint_t *ptr2 = head;
+	const listint_t *prev = NULL;
 
-	if (head == NULL)
+	/**
+	 * if (head == NULL)
 		exit(98);
+		*/
 	/*Floyd's cycle-finding algorithm*/
 	/*or the tortoise and hare algorithm*/
 	while (ptr2 != NULL && ptr2->next != NULL)
@@ -31,11 +33,19 @@ size_t print_listint_safe(const listint_t *head)
 		if (ptr1 == ptr2)
 			exit(98);
 	}
-	while (ptr != NULL)
+
+	/* Reset the pointers for printing the list */
+	ptr1 = head;
+	ptr2 = head;
+
+	while (ptr2 != NULL)
 	{
-		printf("[%p] %d\n", (void *)ptr, ptr->n);
+		printf("[%p] %d\n", (void *)ptr2, ptr2->n);
 		count++;
-		ptr = ptr->next;
+		prev = ptr2;
+		ptr2 = ptr2->next;
 	}
+	printf("-> [%p] %d\n", (void *)prev, prev->n);
+
 	return (count);
 }
