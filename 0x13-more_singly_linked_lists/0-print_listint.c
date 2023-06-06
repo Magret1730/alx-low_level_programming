@@ -3,6 +3,7 @@
 /**
  * print_listint -  prints all the elements of a listint_t list
  * @h: string to be printed
+ *
  * Description: function that prints all the elements of a
  * listint_t list
  * Return: the number of nodes
