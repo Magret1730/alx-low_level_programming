@@ -10,6 +10,7 @@
 /**
  * struct listint_s - singly linked list
  * @n: integer
+ * @next: address of the next linked list
  *
  * Description: singly linked list node structure
  */
