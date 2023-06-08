@@ -18,10 +18,9 @@ size_t print_listint_safe(const listint_t *head)
 	const listint_t *ptr2 = head;
 	const listint_t *prev = NULL;
 
-	/**
-	 * if (head == NULL)
+	if (head == NULL)
 		exit(98);
-		*/
+
 	/*Floyd's cycle-finding algorithm*/
 	/*or the tortoise and hare algorithm*/
 	while (ptr2 != NULL && ptr2->next != NULL)
