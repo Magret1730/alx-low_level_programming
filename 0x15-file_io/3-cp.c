@@ -8,7 +8,7 @@
  */
 int copyFile(const char *file_from, const char *file_to)
 {
-	int fd_from, fd_to;
+	int fd_from, fd_to, close_result;
 	char buf[1024];
 	ssize_t n_read, n_written;
 
@@ -43,8 +43,18 @@ int copyFile(const char *file_from, const char *file_to)
 		close(fd_to);
 		exit(98);
 	}
-	close(fd_from);
-	close(fd_to);
+	close_result = close(fd_from);
+	if (close_result == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
+		exit(100);
+	}
+	close_result = close(fd_to);
+	if (close_result == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
+		exit(100);
+	}
 	return (0);
 }
 /**
@@ -68,17 +78,5 @@ int main(int argc, char *argv[])
 	file_to = argv[2];
 	if (copyFile(file_from, file_to) == -1)
 		exit(100);
-	close_result = close(fd_from);
-	if (close_result == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
-		exit(100);
-	}
-	close_result = close(fd_to);
-	if (close_result == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
-		exit(100);
-	}
 	return (0);
 }
