@@ -16,14 +16,14 @@ int copyFile(const char *file_from, const char *file_to)
 	if (fd_from < 0)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", file_from);
-		return (-1);
+		exit(98);
 	}
 	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd_to < 0)
 	{
 		dprintf(2, "Error: Can't write to %s\n", file_to);
 		close(fd_from);
-		return (-1);
+		exit(99);
 	}
 	while ((n_read = read(fd_from, buf, sizeof(buf))) > 0)
 	{
@@ -33,7 +33,7 @@ int copyFile(const char *file_from, const char *file_to)
 			dprintf(2, "Error: Can't write to %s\n", file_to);
 			close(fd_from);
 			close(fd_to);
-			return (-1);
+			exit(99);
 		}
 	}
 	if (n_read < 0)
@@ -41,7 +41,7 @@ int copyFile(const char *file_from, const char *file_to)
 		dprintf(2, "Error: Can't read from file %s\n", file_from);
 		close(fd_from);
 		close(fd_to);
-		return (-1);
+		exit(98);
 	}
 	close(fd_from);
 	close(fd_to);
@@ -61,11 +61,11 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
-		return (97);
+		exit (97);
 	}
 	file_from = argv[1];
 	file_to = argv[2];
 	if (copyFile(file_from, file_to) == -1)
-		return (98);
+		exit(100);
 	return (0);
 }
