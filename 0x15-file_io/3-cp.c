@@ -57,6 +57,7 @@ int copyFile(const char *file_from, const char *file_to)
 int main(int argc, char *argv[])
 {
 	char *file_from, *file_to;
+	int close_result, fd_from, fd_to;
 
 	if (argc != 3)
 	{
@@ -67,5 +68,17 @@ int main(int argc, char *argv[])
 	file_to = argv[2];
 	if (copyFile(file_from, file_to) == -1)
 		exit(100);
+	close_result = close(fd_from);
+	if (close_result == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
+		exit(100);
+	}
+	close_result = close(fd_to);
+	if (close_result == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
+		exit(100);
+	}
 	return (0);
 }
