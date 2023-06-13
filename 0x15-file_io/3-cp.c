@@ -1,14 +1,16 @@
 #include "main.h"
 /**
- * openFiles - Opens the source and destination files.
- * @file_from: Source file name.
- * @file_to: Destination file name.
- * Description: This function opens the source file and destination files
- * Return: The file descriptors for the source and destination files.
+ * copyFile - function that copies the content of a file to another file
+ * @file_from: source file name
+ * @file_to: destination file name
+ * Description: Copies the content of the source file to the destination file.
+ * Return: 0 on success, -1 on failure
  */
-int openFiles(const char *file_from, const char *file_to)
+int copyFile(const char *file_from, const char *file_to)
 {
-	int fd_from, fd_to;
+	int fd_from, fd_to, close_result;
+	char buf[1024];
+	ssize_t n_read, n_written;
 
 	fd_from = open(file_from, O_RDONLY);
 	if (fd_from < 0)
@@ -23,27 +25,12 @@ int openFiles(const char *file_from, const char *file_to)
 		close(fd_from);
 		exit(99);
 	}
-	return (fd_from, fd_to);
-}
-/**
- * performCopy - Performs the file copy operation.
- * @fd_from: File descriptor of the source file.
- * @fd_to: File descriptor of the destination file.
- * Description: Performs the file copy operation
- * Return: void
- */
-void performCopy(int fd_from, int fd_to)
-{
-	char buf[1024];
-	ssize_t n_read, n_written;
-	int close_result;
-
 	while ((n_read = read(fd_from, buf, sizeof(buf))) > 0)
 	{
 		n_written = write(fd_to, buf, n_read);
 		if (n_written < 0 || n_written != n_read)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to destination file\n");
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			close(fd_from);
 			close(fd_to);
 			exit(99);
@@ -51,7 +38,7 @@ void performCopy(int fd_from, int fd_to)
 	}
 	if (n_read < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from source file\n");
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		close(fd_from);
 		close(fd_to);
 		exit(98);
@@ -68,18 +55,18 @@ void performCopy(int fd_from, int fd_to)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
 		exit(100);
 	}
+	return (0);
 }
 /**
- * main - Program entry point.
- * @argc: Count of arguments.
- * @argv: Files to be copied from and to.
- * Description: main function
- * Return: 0 on success, 97-100 on failure.
+ * main - program entry point
+ * @argc: count of arguments
+ * @argv: files to be copied from and to
+ * Description: Program that copies the content of a file to another file.
+ * Return: 0 on success, 97-100 on failure
  */
 int main(int argc, char *argv[])
 {
 	char *file_from, *file_to;
-	int fd_from, fd_to;
 
 	if (argc != 3)
 	{
@@ -88,9 +75,7 @@ int main(int argc, char *argv[])
 	}
 	file_from = argv[1];
 	file_to = argv[2];
-
-	fd_from, fd_to = openFiles(file_from, file_to);
-	performCopy(fd_from, fd_to);
-
+	if (copyFile(file_from, file_to) == -1)
+		exit(100);
 	return (0);
 }
