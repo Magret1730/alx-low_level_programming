@@ -1,4 +1,4 @@
-#include "main.h"i
+#include "main.h"
 /**
  * copyFile - function that copies the content of a file to another file
  * @file_from: source file name
