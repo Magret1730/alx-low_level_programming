@@ -10,6 +10,7 @@ void hash_table_print(const hash_table_t *ht)
 {
 	hash_node_t *current;
 
+	int first_pair = 1;
 	unsigned long int i;
 
 	if (ht == NULL)
@@ -20,9 +21,10 @@ void hash_table_print(const hash_table_t *ht)
 		current = ht->array[i];
 		while (current != NULL)
 		{
-			printf("'%s': '%s'", current->key, current->value);
-			if (current->next != NULL)
+			if (!first_pair)
 				printf(", ");
+			printf("'%s': '%s'", current->key, current->value);
+			first_pair = 0;
 			current = current->next;
 		}
 	}
