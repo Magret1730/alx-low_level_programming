@@ -12,8 +12,7 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *new_node;
-	hash_node_t *current;
+	hash_node_t *new_node, *current;
 
 	unsigned long int index;
 
@@ -25,8 +24,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		if (strcmp(current->key, key) == 0)
 		{
-			/* Update the value and return */
-			free(current->value);
+			free(current->value); /* Update the value and return */
 			current->value = strdup(value);
 			if (current->value == NULL)
 				return (0);
@@ -35,6 +33,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	/* Key does not exist, create a new node */
 	new_node = malloc(sizeof(hash_node_t));
+	if (new_node == NULL)
+		return (0);
+	new_node->key = strdup(key);
 	if (new_node->key == NULL)
 	{
 		free(new_node);
