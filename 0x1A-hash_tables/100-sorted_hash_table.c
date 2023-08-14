@@ -72,22 +72,31 @@ shash_node_t *create_new_node(const char *key, const char *value)
 void insert_into_sorted_list(shash_table_t *ht, shash_node_t *new_node)
 {
 	shash_node_t *current = ht->shead;
+	shash_node_t *prev = NULL;
 
 	while (current != NULL && strcmp(new_node->key, current->key) > 0)
-		current = current->snext;
-
-	if (current != NULL)
 	{
-		new_node->sprev = current->sprev;
-		current->sprev = new_node;
+		prev = current;
+		current = current->snext;
+	}
+	if (prev != NULL)
+	{
+		prev->snext = new_node;
+		new_node->sprev = prev;
 	}
 	else
 	{
-		if (ht->stail != NULL)
-			ht->stail->snext = new_node;
-		else
-			ht->shead = new_node;
-		new_node->sprev = ht->stail;
+		new_node->sprev = NULL;
+		ht->shead = new_node;
+	}
+	if (current != NULL)
+	{
+		current->sprev = new_node;
+		new_node->snext = current;
+	}
+	else
+	{
+		new_node->snext = NULL;
 		ht->stail = new_node;
 	}
 }
@@ -120,7 +129,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 
-	new_node = create_new_node(key, value);
+	new_node = create_new_node(key_copy, value_copy);
 	if (new_node == NULL)
 	{
 		free(key_copy);
