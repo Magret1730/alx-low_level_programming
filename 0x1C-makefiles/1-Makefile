@@ -1,0 +1,10 @@
+CC = gcc
+SRCS = $(wildcard *.c)
+
+all: clean school
+
+school: $(SRCS)
+	${CC} $(SRCS) -o school
+
+clean:
+	@rm -f school
