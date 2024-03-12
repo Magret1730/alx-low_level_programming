@@ -14,6 +14,7 @@ int interpolation_search(int *array, size_t size, int value);
 int exponential_search(int *array, size_t size, int value);
 int binary_search_exponential(int *array, size_t left, size_t right, int value);
 int advanced_binary(int *array, size_t size, int value);
+int advanced_binary_recursive(int *array, int low, int high, int value);
 
 /**
  * struct listint_s - singly linked list
