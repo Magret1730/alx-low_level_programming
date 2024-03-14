@@ -28,11 +28,11 @@ int exponential_search(int *array, size_t size, int value)
 
 	printf("Value found between indexes [%lu] and [%lu]\n", left, right);
 
-	return (binary_search_exponential(array, left, right, value));
+	return (binary_search_expo(array, left, right, value));
 }
 
 /**
- * binary_search_exponential - Searches for a value in a sorted array
+ * binary_search_expo - Searches for a value in a sorted array
  * using binary search
  * @array: Pointer to the first element of the array to search in
  * @left: The left index of the subarray to search in
@@ -41,7 +41,7 @@ int exponential_search(int *array, size_t size, int value)
  *
  * Return: The index where the value is located, or -1 if not found
  */
-int binary_search_exponential(int *array, size_t left, size_t right, int value)
+int binary_search_expo(int *array, size_t left, size_t right, int value)
 {
 	size_t mid, i;
 
